@@ -147,8 +147,12 @@ body {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    /* Hard-code horror oblique grid */
     background: rgba(5,0,0,0.9);
+    /* Hard-code horror oblique grid */
+    background-image: 
+        repeating-linear-gradient(45deg, rgba(255, 0, 0, 0.08) 0px, rgba(255, 0, 0, 0.08) 1px, transparent 1px, transparent 12px),
+        repeating-linear-gradient(-45deg, rgba(255, 0, 0, 0.04) 0px, rgba(255, 0, 0, 0.04) 1px, transparent 1px, transparent 12px);
+    background-attachment: local;
 }
 
 

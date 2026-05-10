@@ -30,7 +30,7 @@ body {
 /* ââ OVERLAYS ââ */
 .dither-overlay { position: fixed; inset: 0; background-image: var(--dither); pointer-events: none; z-index: 1000; opacity: 0.35; }
 .crt-overlay { position: fixed; inset: 0; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%); background-size: 100% 2px; pointer-events: none; z-index: 999; }
-.ritual-bg { position: fixed; inset: 0; background: #000; z-index: -1; }
+.ritual-bg { display: none; }
 
 /* ââ HEADER & TICKER ââ */
 .ritual-header {
@@ -147,7 +147,6 @@ body {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    background: rgba(5,0,0,0.9);
     /* Hard-code horror oblique grid */
     background-image: 
         repeating-linear-gradient(45deg, rgba(255, 0, 0, 0.08) 0px, rgba(255, 0, 0, 0.08) 1px, transparent 1px, transparent 12px),

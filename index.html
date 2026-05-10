@@ -3,132 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[ .ARGL34K - TERMINAL DE INTERCEPTACIÓN ]</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <title>[ :: !NTΣL_ΔRGL34K :: ]</title>
+
+
+
+
+
+    <link rel="stylesheet" href="style-v8.css">
 </head>
 <body>
+    <div class="dither-overlay"></div>
     <div class="crt-overlay"></div>
+    <div class="ritual-bg"></div>
 
-    <!-- GATE: POPUP DE ACCESO INICIAL -->
-    <div id="gate-overlay">
-        <div id="gate-modal">
-            <div class="gate-header">
-                <span class="gate-blink">●</span>
-                ACCESO RESTRINGIDO
-                <span class="gate-blink">●</span>
+
+
+    <header class="ritual-header">
+
+        <div class="sigil glitch-text" data-text="!NTΣL_ΔRGL34K">
+            !NTΣL_ΔRGL34K
+        </div>
+
+
+
+
+
+        <div class="system-status">
+            <span id="live-clock">00:00:00</span>
+            <select id="lang-selector" class="lang-picker">
+                <option value="es">ES</option>
+                <option value="en">EN</option>
+                <option value="fr">FR</option>
+                <option value="it">IT</option>
+            </select>
+        </div>
+
+    </header>
+
+    <main class="panoramic-layout">
+        
+        <!-- LOGIN GATE INTEGRADO (RESTAURANDO DISEÑO ORIGINAL) -->
+        <div id="integrated-gate" class="ritual-frame login-frame">
+            <div id="locked-label" class="frame-label">SISTEMA_BLOQUEADO</div>
+            <div class="login-content">
+                <div class="gate-sigil">
+                    <img src="assets/lady_justice_v8.png" class="sigil-img" alt="JUSTICE">
+                </div>
+                <p id="gate-msg" class="gate-warning">Si estás leyendo esto, algo salió mal. Yo no elegí estar en el lugar que estoy pero ahora solo puedo escapar. Esta es una forma de protegerme. Procede con cautela. No confíes en nadie. La información es peligro.</p>
+                <div class="input-area">
+                    <div class="gate-input-wrapper">
+                        <div class="gate-input-bg">XX - XX - XX</div>
+                        <input type="text" id="gate-pass" maxlength="12" autocomplete="off" onkeydown="if(event.key==='Enter') validateAccess()">
+                    </div>
+                </div>
+                <p id="access-error" class="error-text hidden">ERR_AUTH_FAIL // 0x000004</p>
             </div>
-            <p class="gate-sub">SISTEMA .ARGL34K // VERIFICACIÓN REQUERIDA</p>
-            <p class="gate-sub dim">Ingrese la clave de acceso para continuar.</p>
-            <div class="gate-input-row">
-                <input type="text" id="gate-input" autocomplete="off" spellcheck="false" placeholder="_ _ _ _ _ _ _">
-            </div>
-            <button id="gate-btn" onclick="checkGate()">[ VERIFICAR ]</button>
-            <p id="gate-error" class="gate-error hidden">> CLAVE INVÁLIDA. ACCESO DENEGADO.</p>
-            <div class="gate-footer">CIFRADO AES-256 | .ARGL34K</div>
+        </div>
+
+
+        <!-- CONTENIDO PRINCIPAL (OCULTO INICIALMENTE) -->
+        <div id="main-content" class="panoramic-inner hidden">
+            <!-- COLUMNA 1: GRABACIONES -->
+            <aside class="side-col col-freq">
+                <div class="ritual-frame side-module mod-freq">
+                    <div id="freq-label" class="frame-label mod-title">GRABACIONES</div>
+                    <div id="freq-list"></div>
+                </div>
+            </aside>
+
+            <!-- COLUMNA 2: CÁMARAS -->
+            <section class="main-col col-surveillance">
+                <div class="ritual-frame frame-surveillance">
+                    <div id="cam-label" class="frame-label">CÁMARAS</div>
+                    <div class="cam-bank">
+                        <div class="cam-cell"><div class="cam-wrap"><iframe src="https://webcams.windy.com/webcams/public/embed/player/1751040831/day"></iframe></div><div class="cam-id">EYE_01</div></div>
+                        <div class="cam-cell"><div class="cam-wrap"><iframe src="https://webcams.windy.com/webcams/public/embed/player/1745449788/day"></iframe></div><div class="cam-id">EYE_02</div></div>
+                        <div class="cam-cell"><div class="cam-wrap"><canvas id="static-cnv"></canvas></div><div class="cam-id">EYE_03</div></div>
+                        <div class="cam-cell"><div class="cam-wrap"><iframe src="https://webcams.windy.com/webcams/public/embed/player/1321040523/day"></iframe></div><div class="cam-id">EYE_04</div></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- COLUMNA 3: DOCUMENTOS -->
+            <section class="main-col col-osint">
+                <div class="ritual-frame frame-osint">
+                    <div id="doc-label" class="frame-label">DOCUMENTOS</div>
+                    <div id="osint-feed" class="osint-scroll"></div>
+                </div>
+            </section>
+
+            <!-- COLUMNA 4: MENSAJES -->
+            <aside class="side-col col-logs">
+                <div class="ritual-frame side-module mod-logs">
+                    <div id="logs-label" class="frame-label mod-title">MENSAJES</div>
+                    <div id="transmissions-list"></div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+
+
+    <footer class="ritual-ticker">
+        <div class="ticker-track">
+            Если вы это читаете, значит, что-то пошло не так. Или все пошло не так. Я не выбирал место, где нахожусь, но теперь я могу только бежать. Это способ защитить себя. Действуйте с осторожностью. Информация — это опасность. // Если вы это читаете, значит, что-то пошло не так. Или все пошло не так. Я не выбирал место, где нахожусь, но теперь я могу только бежать. Это способ защитить себя. Действуйте с осторожностью. Информация — это опасность. //
+        </div>
+
+
+
+    </footer>
+
+
+
+
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="hidden" onclick="closeLightbox()">
+        <div class="lb-inner" onclick="event.stopPropagation()">
+            <div id="lb-content"></div>
+            <button class="lb-close" onclick="closeLightbox()">[ CERRAR ]</button>
         </div>
     </div>
-    <div class="terminal-container">
-        <header>
-            <h1>[ .ARGL34K - INTERCEPT TERMINAL v3.14 ]</h1>
-            <p>ESTADO: <span class="status-online">EN LÍNEA</span> | CIFRADO: AES-256</p>
-            <p>ADVERTENCIA: ACCESO NO AUTORIZADO. RASTREO IP DESACTIVADO.</p>
-            <hr>
-        </header>
 
-        <main>
-            <section class="intro">
-                <p>> Conectando a servidores seguros...</p>
-                <p>> Frecuencias interceptadas en las últimas 72 horas.</p>
-                <p>> Hay archivos clasificados. Se requiere clave de desencriptación.</p>
-            </section>
+    <!-- GATE -->
+    <div id="admin-gate" class="hidden">
+        <div class="gate-box">
+            <div id="enter-key-label" class="gate-title">// INGRESE CLAVE //</div>
+            <input type="password" id="gate-input" autocomplete="off">
+            <div id="gate-error" class="hidden">ACCESO DENEGADO</div>
+        </div>
 
-            <!-- SECCIÓN DE TRANSMISIONES DEL OPERADOR -->
-            <section class="transmissions-section">
-                <h2>// TRANSMISIONES DEL OPERADOR</h2>
-                <div id="transmissions-list">
-                    <!-- Los mensajes se renderizan desde localStorage vía JS -->
-                    <p class="no-transmissions" id="no-transmissions-msg">> Sin transmisiones activas.</p>
-                </div>
-            </section>
-
-            <hr>
-
-            <section class="files-list">
-                <h2>// REGISTRO DE FRECUENCIAS</h2>
-                
-                <div class="file-item unlocked" onclick="playAudio('audio1')">
-                    <span class="file-name">[ AUDIO ] FREQ_A1_INTERFERENCIA.wav</span>
-                    <span class="file-status">DESBLOQUEADO</span>
-                    <audio id="audio1" src="assets/11729__wwwbonsonca__telephone_interference_01.wav"></audio>
-                </div>
-
-                <div class="file-item unlocked" onclick="playAudio('audio2')">
-                    <span class="file-name">[ AUDIO ] FREQ_B2_DUGA_RADAR_WOODPECKER.ogg</span>
-                    <span class="file-status">DESBLOQUEADO</span>
-                    <audio id="audio2" src="assets/Woodpecker.ogg"></audio>
-                </div>
-
-                <div class="file-item unlocked" onclick="playAudio('audio3')">
-                    <span class="file-name">[ AUDIO ] FREQ_M3_CLAVE_MORSE.mp3</span>
-                    <span class="file-status">DESBLOQUEADO</span>
-                    <audio id="audio3" src="assets/CLAVE-EN-MORSE.mp3"></audio>
-                </div>
-
-                <div class="file-item unlocked" onclick="playAudio('audio4')">
-                    <span class="file-name">[ AUDIO ] FREQ_R4_CLAVE_RUSA_PT1.mp3</span>
-                    <span class="file-status">DESBLOQUEADO</span>
-                    <audio id="audio4" src="assets/CLAVE-EN-RUSO-pt1.mp3"></audio>
-                </div>
-
-                <hr>
-                <h2>// ARCHIVOS CLASIFICADOS</h2>
-
-                <div class="file-item locked" id="locked-file-1" onclick="promptPassword('locked-file-1', 'congreso', 'audio5')">
-                    <span class="file-name">[ DATOS ] EXPEDIENTE_04_DRONE.dat</span>
-                    <span class="file-status">BLOQUEADO</span>
-                    <audio id="audio5" src="assets/Alarma en la terraza del Congreso por un drone LA NACION.mp3"></audio>
-                </div>
-
-                <div class="file-item locked" id="locked-file-2" onclick="promptPassword('locked-file-2', 'moscu', 'audio6')">
-                    <span class="file-name">[ DATOS ] EXPEDIENTE_05_ESPIAS.dat</span>
-                    <span class="file-status">BLOQUEADO</span>
-                    <audio id="audio6" src="assets/ADORNI y los dos espías rusos  DNews - DNews.mp3"></audio>
-                </div>
-            </section>
-
-            <div id="password-modal" class="hidden">
-                <p>> INGRESE CLAVE DE ACCESO PARA DESENCRIPTAR:</p>
-                <input type="text" id="password-input" autocomplete="off" spellcheck="false">
-                <button onclick="checkPassword()">EJECUTAR</button>
-                <p id="password-error" class="error-text hidden">> ERROR: CLAVE INVÁLIDA.</p>
-            </div>
-        </main>
-
-        <footer>
-            <hr>
-            <p>CONEXIÓN SEGURA | ALIAS OPERADOR: .ARGL34K | CONTACTO: <a href="mailto:argmarcopolo@gmail.com">argmarcopolo@gmail.com</a></p>
-            <p class="blinking-cursor">_</p>
-        </footer>
     </div>
 
-    <!-- PANEL DE ADMIN OCULTO (Ctrl+Shift+A) -->
-    <div id="admin-panel" class="hidden">
-        <div id="admin-panel-inner">
-            <h3>// PANEL DE OPERADOR .ARGL34K</h3>
-            <p>Nueva transmisión:</p>
-            <textarea id="admin-message-input" placeholder="Escribí el mensaje..." rows="4" spellcheck="false"></textarea>
-            <div class="admin-buttons">
-                <button onclick="postTransmission()">[ TRANSMITIR ]</button>
-                <button onclick="closeAdmin()" class="btn-cancel">[ CERRAR ]</button>
+    <!-- CONSOLA DE OPERADOR (SIGILO) -->
+    <div id="stealth-modal" class="hidden">
+        <div class="stealth-console">
+            <div id="console-header" class="console-header">[ OPERADOR // CONSOLA_DE_COMUNICACIONES ]</div>
+            <div id="console-history" class="console-body"></div>
+            <div class="console-input-area">
+                <input type="text" id="console-input" placeholder="NUEVA TRANSMISIÓN..." autocomplete="off">
+                <div class="console-actions">
+                    <span id="clear-btn" class="console-btn" onclick="clearAllTransmissions()">[ CLEAR_ALL ]</span>
+                    <span id="exit-btn" class="console-btn" onclick="closeStealthConsole()">[ EXIT ]</span>
+                </div>
             </div>
-            <hr>
-            <h3>// TRANSMISIONES ACTIVAS</h3>
-            <div id="admin-transmissions-list"></div>
         </div>
     </div>
-    <div id="admin-overlay" class="hidden" onclick="closeAdmin()"></div>
 
-    <script src="script.js"></script>
+    <!-- ── OPERATOR CONSOLE (Ctrl+Shift+X) ── -->
+    <div id="operator-gate" class="hidden overlay-full no-blur">
+        <div class="ritual-frame operator-box">
+            <div class="frame-label">AUTENTICACIÓN_REQUERIDA</div>
+            <p class="gate-warning" style="font-size:1.1rem; margin-bottom:20px;">INGRESE CREDENCIALES DE NIVEL OPERADOR.</p>
+            <div class="operator-input-wrap">
+                <input type="password" id="op-pass" placeholder="[ PASSWORD ]" onkeydown="if(event.key==='Enter') validateOperator()">
+                <button onclick="validateOperator()">ACCEDER</button>
+            </div>
+            <p id="op-error" class="error-text hidden">✕ ACCESO DENEGADO</p>
+            <button class="gate-btn" style="margin-top:20px; font-size:0.7rem;" onclick="closeOperator()">CANCELAR</button>
+        </div>
+    </div>
+
+    <div id="operator-console" class="hidden overlay-full no-blur">
+        <div class="ritual-frame operator-box console-wide">
+            <div class="frame-label">CONSOLA_DE_DIFUSIÓN_OPERADOR</div>
+            <p class="gate-warning" style="text-align:left; margin-bottom:15px; font-size:1rem;">TRANSMISIÓN EN TIEMPO REAL.</p>
+            
+            <textarea id="op-msg" placeholder="ESCRIBA EL MENSAJE PARA LA RED..." rows="3"></textarea>
+            
+            <div class="console-actions">
+                <button class="gate-btn" onclick="broadcastMessage()">▶ EJECUTAR BROADCAST</button>
+                <button class="gate-btn btn-dim" onclick="closeOperator()">CERRAR</button>
+            </div>
+
+            <div class="operator-history-wrap">
+                <div class="history-label">HISTORIAL_DE_DIFUSIONES:</div>
+                <div id="op-history-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script-v8.js"></script>
+
 </body>
 </html>

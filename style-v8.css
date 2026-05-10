@@ -138,7 +138,7 @@ body {
 /* ââ RITUAL FRAMES (ANGUS BOXES) ââ */
 /* ── RITUAL FRAMES (ALIGNED MODULES) ── */
 .ritual-frame {
-    background: rgba(5,0,0,0.9);
+    background-color: rgba(5,0,0,0.9);
     border: 1px solid var(--red-blood);
     position: relative;
     padding: 45px 20px 20px;
@@ -149,8 +149,8 @@ body {
     flex-direction: column;
     /* Hard-code horror oblique grid */
     background-image: 
-        repeating-linear-gradient(45deg, rgba(255, 0, 0, 0.08) 0px, rgba(255, 0, 0, 0.08) 1px, transparent 1px, transparent 12px),
-        repeating-linear-gradient(-45deg, rgba(255, 0, 0, 0.04) 0px, rgba(255, 0, 0, 0.04) 1px, transparent 1px, transparent 12px);
+        repeating-linear-gradient(45deg, rgba(255, 0, 0, 0.12) 0px, rgba(255, 0, 0, 0.12) 1px, transparent 1px, transparent 12px),
+        repeating-linear-gradient(-45deg, rgba(255, 0, 0, 0.08) 0px, rgba(255, 0, 0, 0.08) 1px, transparent 1px, transparent 12px);
     background-attachment: local;
 }
 

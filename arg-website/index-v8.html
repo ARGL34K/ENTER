@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[ :: !NTΣL_ΔRGL34K :: ]</title>
+
+
+
+
+
+    <link rel="stylesheet" href="style-v8.css">
+</head>
+<body>
+    <div class="dither-overlay"></div>
+    <div class="crt-overlay"></div>
+    <div class="ritual-bg"></div>
+
+
+
+    <header class="ritual-header">
+
+        <div class="sigil glitch-text" data-text="!NTΣL_ΔRGL34K">
+            !NTΣL_ΔRGL34K
+        </div>
+
+
+
+
+
+        <div class="system-status">
+            <span id="live-clock">00:00:00</span>
+            <select id="lang-selector" class="lang-picker">
+                <option value="es">ES</option>
+                <option value="en">EN</option>
+                <option value="fr">FR</option>
+                <option value="it">IT</option>
+            </select>
+        </div>
+
+    </header>
+
+    <main class="panoramic-layout">
+        
+        <!-- LOGIN GATE INTEGRADO (RESTAURANDO DISEÑO ORIGINAL) -->
+        <div id="integrated-gate" class="ritual-frame login-frame">
+            <div id="locked-label" class="frame-label">SISTEMA_BLOQUEADO</div>
+            <div class="login-content">
+                <div class="gate-sigil">
+                    <img src="assets/lady_justice_v8.png" class="sigil-img" alt="JUSTICE">
+                </div>
+                <p id="gate-msg" class="gate-warning">Si estás leyendo esto, algo salió mal. Yo no elegí estar en el lugar que estoy pero ahora solo puedo escapar. Esta es una forma de protegerme. Procede con cautela. No confíes en nadie. La información es peligro.</p>
+                <div class="input-area">
+                    <div class="gate-input-wrapper">
+                        <div class="gate-input-bg">XX - XX - XX</div>
+                        <input type="text" id="gate-pass" maxlength="12" autocomplete="off" onkeydown="if(event.key==='Enter') validateAccess()">
+                    </div>
+                </div>
+                <p id="access-error" class="error-text hidden">ERR_AUTH_FAIL // 0x000004</p>
+            </div>
+        </div>
+
+
+        <!-- CONTENIDO PRINCIPAL (OCULTO INICIALMENTE) -->
+        <div id="main-content" class="panoramic-inner hidden">
+            <!-- COLUMNA 1: GRABACIONES -->
+            <aside class="side-col col-freq">
+                <div class="ritual-frame side-module mod-freq">
+                    <div id="freq-label" class="frame-label mod-title">GRABACIONES</div>
+                    <div id="freq-list"></div>
+                </div>
+            </aside>
+
+            <!-- COLUMNA 2: CÁMARAS -->
+            <section class="main-col col-surveillance">
+                <div class="ritual-frame frame-surveillance">
+                    <div id="cam-label" class="frame-label">CÁMARAS</div>
+                    <div class="cam-bank">
+                        <div class="cam-cell"><div class="cam-wrap"><iframe src="https://webcams.windy.com/webcams/public/embed/player/1751040831/day"></iframe></div><div class="cam-id">EYE_01</div></div>
+                        <div class="cam-cell"><div class="cam-wrap"><iframe src="https://webcams.windy.com/webcams/public/embed/player/1745449788/day"></iframe></div><div class="cam-id">EYE_02</div></div>
+                        <div class="cam-cell"><div class="cam-wrap"><canvas id="static-cnv"></canvas></div><div class="cam-id">EYE_03</div></div>
+                        <div class="cam-cell"><div class="cam-wrap"><iframe src="https://webcams.windy.com/webcams/public/embed/player/1321040523/day"></iframe></div><div class="cam-id">EYE_04</div></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- COLUMNA 3: DOCUMENTOS -->
+            <section class="main-col col-osint">
+                <div class="ritual-frame frame-osint">
+                    <div id="doc-label" class="frame-label">DOCUMENTOS</div>
+                    <div id="osint-feed" class="osint-scroll"></div>
+                </div>
+            </section>
+
+            <!-- COLUMNA 4: MENSAJES -->
+            <aside class="side-col col-logs">
+                <div class="ritual-frame side-module mod-logs">
+                    <div id="logs-label" class="frame-label mod-title">MENSAJES</div>
+                    <div id="transmissions-list"></div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+
+
+    <footer class="ritual-ticker">
+        <div class="ticker-track">
+            Если вы это читаете, значит, что-то пошло не так. Или все пошло не так. Я не выбирал место, где нахожусь, но теперь я могу только бежать. Это способ защитить себя. Действуйте с осторожностью. Информация — это опасность. // Если вы это читаете, значит, что-то пошло не так. Или все пошло не так. Я не выбирал место, где нахожусь, но теперь я могу только бежать. Это способ защитить себя. Действуйте с осторожностью. Информация — это опасность. //
+        </div>
+
+
+
+    </footer>
+
+
+
+
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="hidden" onclick="closeLightbox()">
+        <div class="lb-inner" onclick="event.stopPropagation()">
+            <div id="lb-content"></div>
+            <button class="lb-close" onclick="closeLightbox()">[ CERRAR ]</button>
+        </div>
+    </div>
+
+    <!-- GATE -->
+    <div id="admin-gate" class="hidden">
+        <div class="gate-box">
+            <div id="enter-key-label" class="gate-title">// INGRESE CLAVE //</div>
+            <input type="password" id="gate-input" autocomplete="off">
+            <div id="gate-error" class="hidden">ACCESO DENEGADO</div>
+        </div>
+
+    </div>
+
+    <!-- CONSOLA DE OPERADOR (SIGILO) -->
+    <div id="stealth-modal" class="hidden">
+        <div class="stealth-console">
+            <div id="console-header" class="console-header">[ OPERADOR // CONSOLA_DE_COMUNICACIONES ]</div>
+            <div id="console-history" class="console-body"></div>
+            <div class="console-input-area">
+                <input type="text" id="console-input" placeholder="NUEVA TRANSMISIÓN..." autocomplete="off">
+                <div class="console-actions">
+                    <span id="clear-btn" class="console-btn" onclick="clearAllTransmissions()">[ CLEAR_ALL ]</span>
+                    <span id="exit-btn" class="console-btn" onclick="closeStealthConsole()">[ EXIT ]</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── OPERATOR CONSOLE (Ctrl+Shift+X) ── -->
+    <div id="operator-gate" class="hidden overlay-full no-blur">
+        <div class="ritual-frame operator-box">
+            <div class="frame-label">AUTENTICACIÓN_REQUERIDA</div>
+            <p class="gate-warning" style="font-size:1.1rem; margin-bottom:20px;">INGRESE CREDENCIALES DE NIVEL OPERADOR.</p>
+            <div class="operator-input-wrap">
+                <input type="password" id="op-pass" placeholder="[ PASSWORD ]" onkeydown="if(event.key==='Enter') validateOperator()">
+                <button onclick="validateOperator()">ACCEDER</button>
+            </div>
+            <p id="op-error" class="error-text hidden">✕ ACCESO DENEGADO</p>
+            <button class="gate-btn" style="margin-top:20px; font-size:0.7rem;" onclick="closeOperator()">CANCELAR</button>
+        </div>
+    </div>
+
+    <div id="operator-console" class="hidden overlay-full no-blur">
+        <div class="ritual-frame operator-box console-wide">
+            <div class="frame-label">CONSOLA_DE_DIFUSIÓN_OPERADOR</div>
+            <p class="gate-warning" style="text-align:left; margin-bottom:15px; font-size:1rem;">TRANSMISIÓN EN TIEMPO REAL.</p>
+            
+            <textarea id="op-msg" placeholder="ESCRIBA EL MENSAJE PARA LA RED..." rows="3"></textarea>
+            
+            <div class="console-actions">
+                <button class="gate-btn" onclick="broadcastMessage()">▶ EJECUTAR BROADCAST</button>
+                <button class="gate-btn btn-dim" onclick="closeOperator()">CERRAR</button>
+            </div>
+
+            <div class="operator-history-wrap">
+                <div class="history-label">HISTORIAL_DE_DIFUSIONES:</div>
+                <div id="op-history-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script-v8.js"></script>
+
+</body>
+</html>

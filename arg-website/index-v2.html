@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.ARGL34K // SURVEILLANCE ACTIVE</title>
+    <link rel="stylesheet" href="style-v2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- GATE: POPUP DE ACCESO INICIAL -->
+    <div id="gate-overlay">
+        <div id="gate-modal">
+            <div class="gate-header">
+                <span class="gate-blink">●</span>
+                ACCESO RESTRINGIDO
+                <span class="gate-blink">●</span>
+            </div>
+            <p class="gate-sub">SISTEMA .ARGL34K // VERIFICACIÓN REQUERIDA</p>
+            <p class="gate-sub dim">Ingrese la clave de acceso para continuar.</p>
+            <div class="gate-input-row">
+                <input type="text" id="gate-input" autocomplete="off" spellcheck="false" placeholder="_ _ _ _ _ _ _">
+            </div>
+            <button id="gate-btn" onclick="checkGate()">[ VERIFICAR ]</button>
+            <p id="gate-error" class="gate-error hidden">> CLAVE INVÁLIDA. ACCESO DENEGADO.</p>
+            <div class="gate-footer">CIFRADO AES-256 | .ARGL34K</div>
+        </div>
+    </div>
+
+    <!-- HUD: BARRA SUPERIOR -->
+    <header class="hud-bar hud-top">
+        <div class="hud-top-left">
+            <span class="sys-id">.ARGL34K</span>
+            <span class="sep">|</span>
+            <span class="sys-label">INTERCEPT SURVEILLANCE SYSTEM</span>
+        </div>
+        <div class="hud-top-center">
+            <span class="live-dot">●</span>
+            <span id="live-clock">00:00:00</span>
+            <span class="date-str" id="live-date">--/--/----</span>
+        </div>
+        <div class="hud-top-right">
+            <span class="threat">THREAT LEVEL: <span class="threat-value">ALTO</span></span>
+            <span class="sep">|</span>
+            <a href="index-v3.html" class="version-switch">→ UCi CONTRAINTELIGENCIA</a>
+        </div>
+    </header>
+
+    <!-- MAIN HUD -->
+    <div class="hud-main">
+
+        <!-- COLUMNA IZQUIERDA: CÁMARAS + TARGETING -->
+        <aside class="hud-left">
+
+            <div class="panel-label">// VIGILANCIA ACTIVA</div>
+
+            <div class="cam-grid">
+
+                <!-- CAM 01: Dock Sud / Puerto BsAs -->
+                <div class="cam-feed" onclick="openCamLightbox(0)" title="Ver CAM 01 en pantalla completa">
+                    <div class="cam-vhs-wrap">
+                        <iframe src="https://webcams.windy.com/webcams/public/embed/player/1751040831/day"
+                                frameborder="0" allowfullscreen scrolling="no"
+                                allow="autoplay"></iframe>
+                    </div>
+                    <div class="cam-overlay">
+                        <div class="cam-top-row">
+                            <span class="cam-name">CAM 01 · DOCK SUD</span>
+                            <span class="cam-rec">● REC</span>
+                        </div>
+                        <div class="cam-bottom-row">
+                            <span class="cam-coord">34°40'S 58°21'O · PUERTO</span>
+                            <span class="cam-expand">⬜ EXPANDIR</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAM 02: Martínez / ruta de escape Uruguay -->
+                <div class="cam-feed" onclick="openCamLightbox(1)" title="Ver CAM 02 en pantalla completa">
+                    <div class="cam-vhs-wrap">
+                        <iframe src="https://webcams.windy.com/webcams/public/embed/player/1745449788/day"
+                                frameborder="0" allowfullscreen scrolling="no"
+                                allow="autoplay"></iframe>
+                    </div>
+                    <div class="cam-overlay">
+                        <div class="cam-top-row">
+                            <span class="cam-name">CAM 02 · MARTÍNEZ</span>
+                            <span class="cam-rec">● REC</span>
+                        </div>
+                        <div class="cam-bottom-row">
+                            <span class="cam-coord">34°29'S 58°31'O · NORTE</span>
+                            <span class="cam-expand">⬜ EXPANDIR</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAM 03: SEÑAL INACTIVA -->
+                <div class="cam-feed" onclick="openCamLightbox(2)" title="Ver CAM 03 en pantalla completa">
+                    <canvas class="cam-static" id="cnv3"></canvas>
+                    <div class="cam-overlay">
+                        <div class="cam-top-row">
+                            <span class="cam-name">CAM 03 · DPTO-D P8</span>
+                            <span class="cam-rec blink-slow">● REC</span>
+                        </div>
+                        <div class="cam-bottom-row">
+                            <span class="cam-coord cam-alert">SEÑAL CORTADA</span>
+                            <span class="cam-expand">⬜ EXPANDIR</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAM 04: MAPA WINDY OLAS — Buenos Aires → Colonia del Sacramento -->
+                <div class="cam-feed cam-map-cell" onclick="openCamLightbox(3)" title="Ver mapa en pantalla completa">
+                    <div class="cam-map-wrap">
+                        <iframe
+                            src="https://embed.windy.com/embed2.html?lat=-35.5&lon=-57.85&detailLat=-35.5&detailLon=-57.85&zoom=5&level=surface&overlay=waves&product=ecmwf&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1"
+                            frameborder="0" allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="cam-overlay">
+                        <div class="cam-top-row">
+                            <span class="cam-name">CAM 04 · RUTA ESCAPE</span>
+                            <span class="cam-rec">● LIVE</span>
+                        </div>
+                        <div class="cam-bottom-row">
+                            <span class="cam-coord">BsAs → COLONIA · MODO OLAS</span>
+                            <span class="cam-expand">⬜ EXPANDIR</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- ACCESO PÚBLICO: OSINT / FUENTES ABIERTAS -->
+            <div class="data-section osint-section">
+                <div class="panel-label">// ACCESO PÚBLICO · FUENTES ABIERTAS</div>
+                <div class="osint-filters">
+                    <button class="osint-btn active" onclick="filterOsint('all', this)">TODOS</button>
+                    <button class="osint-btn" onclick="filterOsint('espionaje', this)">ESPIONAJE</button>
+                    <button class="osint-btn" onclick="filterOsint('vigilancia', this)">VIGILANCIA</button>
+                    <button class="osint-btn" onclick="filterOsint('zona', this)">ZONA OPS</button>
+                    <button class="osint-btn" onclick="filterOsint('ruta', this)">RUTA</button>
+                </div>
+                <div id="osint-feed"></div>
+            </div>
+
+        </aside>
+
+        <!-- COLUMNA DERECHA: DATA PANEL -->
+        <section class="hud-right">
+
+            <!-- TRANSMISIONES -->
+            <div class="data-section">
+                <div class="panel-label">// TRANSMISIONES DEL OPERADOR</div>
+                <div id="transmissions-list">
+                    <p class="no-transmissions" id="no-transmissions-msg">SIN TRANSMISIONES ACTIVAS.</p>
+                </div>
+            </div>
+
+            <!-- FRECUENCIAS -->
+            <div class="data-section">
+                <div class="panel-label">// FRECUENCIAS INTERCEPTADAS</div>
+
+                <div class="file-row unlocked" onclick="playAudio('audio1')">
+                    <div class="file-row-left">
+                        <span class="file-type">[ WAV ]</span>
+                        <span class="file-name">FREQ_A1_INTERFERENCIA_TEL</span>
+                    </div>
+                    <span class="file-status-v2 ok">▶ REPRODUCIR</span>
+                    <audio id="audio1" src="assets/11729__wwwbonsonca__telephone_interference_01.wav"></audio>
+                </div>
+
+                <div class="file-row unlocked" onclick="playAudio('audio2')">
+                    <div class="file-row-left">
+                        <span class="file-type">[ OGG ]</span>
+                        <span class="file-name">FREQ_B2_DUGA_WOODPECKER_RU</span>
+                    </div>
+                    <span class="file-status-v2 ok">▶ REPRODUCIR</span>
+                    <audio id="audio2" src="assets/Woodpecker.ogg"></audio>
+                </div>
+
+                <div class="file-row unlocked" onclick="playAudio('audio3')">
+                    <div class="file-row-left">
+                        <span class="file-type">[ MP3 ]</span>
+                        <span class="file-name">FREQ_M3_MORSE_CLAVE</span>
+                    </div>
+                    <span class="file-status-v2 ok">▶ REPRODUCIR</span>
+                    <audio id="audio3" src="assets/CLAVE-EN-MORSE.mp3"></audio>
+                </div>
+
+                <div class="file-row unlocked" onclick="playAudio('audio4')">
+                    <div class="file-row-left">
+                        <span class="file-type">[ MP3 ]</span>
+                        <span class="file-name">FREQ_R4_CLAVE_RU_PT1</span>
+                    </div>
+                    <span class="file-status-v2 ok">▶ REPRODUCIR</span>
+                    <audio id="audio4" src="assets/CLAVE-EN-RUSO-pt1.mp3"></audio>
+                </div>
+            </div>
+
+            <!-- ARCHIVOS CLASIFICADOS -->
+            <div class="data-section">
+                <div class="panel-label">// EXPEDIENTES CLASIFICADOS</div>
+
+                <div class="file-row locked" id="locked-file-1" onclick="promptPassword('locked-file-1', 'congreso', 'audio5')">
+                    <div class="file-row-left">
+                        <span class="file-type alert">[ DAT ]</span>
+                        <span class="file-name">EXPEDIENTE_04_DRONE_CONGRESO</span>
+                    </div>
+                    <span class="file-status-v2 locked-status">▌ BLOQUEADO</span>
+                    <audio id="audio5" src="assets/Alarma en la terraza del Congreso por un drone LA NACION.mp3"></audio>
+                </div>
+
+                <div class="file-row locked" id="locked-file-2" onclick="promptPassword('locked-file-2', 'moscu', 'audio6')">
+                    <div class="file-row-left">
+                        <span class="file-type alert">[ DAT ]</span>
+                        <span class="file-name">EXPEDIENTE_05_ESPIAS_RUSOS</span>
+                    </div>
+                    <span class="file-status-v2 locked-status">▌ BLOQUEADO</span>
+                    <audio id="audio6" src="assets/ADORNI y los dos espías rusos  DNews - DNews.mp3"></audio>
+                </div>
+
+                <!-- Modal contraseña v2 -->
+                <div id="password-modal" class="hidden">
+                    <p class="pw-prompt">▶ INGRESE CLAVE DE ACCESO:</p>
+                    <div class="pw-input-row">
+                        <input type="text" id="password-input" autocomplete="off" spellcheck="false" placeholder="_ _ _ _ _ _ _">
+                        <button onclick="checkPassword()">EJECUTAR</button>
+                    </div>
+                    <p id="password-error" class="error-text hidden">✕ CLAVE INVÁLIDA. INTENTO REGISTRADO.</p>
+                </div>
+            </div>
+
+
+        </section>
+    </div>
+
+    <!-- HUD: BARRA INFERIOR -->
+    <footer class="hud-bar hud-bottom">
+        <span>OPERADOR: .ARGL34K</span>
+        <span class="sep">|</span>
+        <a href="mailto:argmarcopolo@gmail.com">argmarcopolo@gmail.com</a>
+        <span class="sep">|</span>
+        <span>CIFRADO: AES-256</span>
+        <span class="sep">|</span>
+        <span class="blink-fast">CTRL+SHIFT+A → PANEL OPERADOR</span>
+    </footer>
+
+    <!-- PANEL ADMIN (compartido con v1) -->
+    <div id="admin-panel" class="hidden">
+        <div id="admin-panel-inner">
+            <h3>// PANEL DE OPERADOR .ARGL34K</h3>
+            <p>Nueva transmisión:</p>
+            <textarea id="admin-message-input" placeholder="Escribí el mensaje..." rows="4" spellcheck="false"></textarea>
+            <div class="admin-buttons">
+                <button onclick="postTransmission()">[ TRANSMITIR ]</button>
+                <button onclick="closeAdmin()" class="btn-cancel">[ CERRAR ]</button>
+            </div>
+            <hr>
+            <h3>// TRANSMISIONES ACTIVAS</h3>
+            <div id="admin-transmissions-list"></div>
+        </div>
+    </div>
+    <div id="admin-overlay" class="hidden" onclick="closeAdmin()"></div>
+
+    <!-- LIGHTBOX: CÁMARA EN PANTALLA COMPLETA -->
+    <div id="cam-lightbox" class="hidden">
+        <!-- Click en el backdrop cierra -->
+        <div class="lb-backdrop" onclick="closeCamLightbox()"></div>
+
+        <div class="lb-inner">
+            <!-- HUD top -->
+            <div class="lb-hud-top">
+                <div class="lb-hud-left">
+                    <span class="lb-dot">●</span>
+                    <span id="lb-cam-name">CAM 01</span>
+                    <span class="lb-sep">|</span>
+                    <span id="lb-cam-coord"></span>
+                </div>
+                <div class="lb-hud-right">
+                    <span id="lb-clock-live"></span>
+                    <button class="lb-close" onclick="closeCamLightbox()">✕ CERRAR</button>
+                </div>
+            </div>
+
+            <!-- Contenido de la cámara -->
+            <div id="lb-content" class="lb-content"></div>
+
+            <!-- Scanlines VHS sobre todo -->
+            <div class="lb-scanlines"></div>
+
+            <!-- HUD bottom -->
+            <div class="lb-hud-bottom">
+                <span>.ARGL34K // INTERCEPT SURVEILLANCE SYSTEM</span>
+                <span class="lb-sep">|</span>
+                <span>CIFRADO: AES-256</span>
+                <span class="lb-sep">|</span>
+                <span class="blink-fast">ESC — CERRAR</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="script-v2.js"></script>
+</body>
+</html>

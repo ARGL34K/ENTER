@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[ .ARGL34K - TERMINAL DE INTERCEPTACIÓN ]</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="crt-overlay"></div>
+
+    <!-- GATE: POPUP DE ACCESO INICIAL -->
+    <div id="gate-overlay">
+        <div id="gate-modal">
+            <div class="gate-header">
+                <span class="gate-blink">●</span>
+                ACCESO RESTRINGIDO
+                <span class="gate-blink">●</span>
+            </div>
+            <p class="gate-sub">SISTEMA .ARGL34K // VERIFICACIÓN REQUERIDA</p>
+            <p class="gate-sub dim">Ingrese la clave de acceso para continuar.</p>
+            <div class="gate-input-row">
+                <input type="text" id="gate-input" autocomplete="off" spellcheck="false" placeholder="_ _ _ _ _ _ _">
+            </div>
+            <button id="gate-btn" onclick="checkGate()">[ VERIFICAR ]</button>
+            <p id="gate-error" class="gate-error hidden">> CLAVE INVÁLIDA. ACCESO DENEGADO.</p>
+            <div class="gate-footer">CIFRADO AES-256 | .ARGL34K</div>
+        </div>
+    </div>
+    <div class="terminal-container">
+        <header>
+            <h1>[ .ARGL34K - INTERCEPT TERMINAL v3.14 ]</h1>
+            <p>ESTADO: <span class="status-online">EN LÍNEA</span> | CIFRADO: AES-256</p>
+            <p>ADVERTENCIA: ACCESO NO AUTORIZADO. RASTREO IP DESACTIVADO.</p>
+            <hr>
+        </header>
+
+        <main>
+            <section class="intro">
+                <p>> Conectando a servidores seguros...</p>
+                <p>> Frecuencias interceptadas en las últimas 72 horas.</p>
+                <p>> Hay archivos clasificados. Se requiere clave de desencriptación.</p>
+            </section>
+
+            <!-- SECCIÓN DE TRANSMISIONES DEL OPERADOR -->
+            <section class="transmissions-section">
+                <h2>// TRANSMISIONES DEL OPERADOR</h2>
+                <div id="transmissions-list">
+                    <!-- Los mensajes se renderizan desde localStorage vía JS -->
+                    <p class="no-transmissions" id="no-transmissions-msg">> Sin transmisiones activas.</p>
+                </div>
+            </section>
+
+            <hr>
+
+            <section class="files-list">
+                <h2>// REGISTRO DE FRECUENCIAS</h2>
+                
+                <div class="file-item unlocked" onclick="playAudio('audio1')">
+                    <span class="file-name">[ AUDIO ] FREQ_A1_INTERFERENCIA.wav</span>
+                    <span class="file-status">DESBLOQUEADO</span>
+                    <audio id="audio1" src="assets/11729__wwwbonsonca__telephone_interference_01.wav"></audio>
+                </div>
+
+                <div class="file-item unlocked" onclick="playAudio('audio2')">
+                    <span class="file-name">[ AUDIO ] FREQ_B2_DUGA_RADAR_WOODPECKER.ogg</span>
+                    <span class="file-status">DESBLOQUEADO</span>
+                    <audio id="audio2" src="assets/Woodpecker.ogg"></audio>
+                </div>
+
+                <div class="file-item unlocked" onclick="playAudio('audio3')">
+                    <span class="file-name">[ AUDIO ] FREQ_M3_CLAVE_MORSE.mp3</span>
+                    <span class="file-status">DESBLOQUEADO</span>
+                    <audio id="audio3" src="assets/CLAVE-EN-MORSE.mp3"></audio>
+                </div>
+
+                <div class="file-item unlocked" onclick="playAudio('audio4')">
+                    <span class="file-name">[ AUDIO ] FREQ_R4_CLAVE_RUSA_PT1.mp3</span>
+                    <span class="file-status">DESBLOQUEADO</span>
+                    <audio id="audio4" src="assets/CLAVE-EN-RUSO-pt1.mp3"></audio>
+                </div>
+
+                <hr>
+                <h2>// ARCHIVOS CLASIFICADOS</h2>
+
+                <div class="file-item locked" id="locked-file-1" onclick="promptPassword('locked-file-1', 'congreso', 'audio5')">
+                    <span class="file-name">[ DATOS ] EXPEDIENTE_04_DRONE.dat</span>
+                    <span class="file-status">BLOQUEADO</span>
+                    <audio id="audio5" src="assets/Alarma en la terraza del Congreso por un drone LA NACION.mp3"></audio>
+                </div>
+
+                <div class="file-item locked" id="locked-file-2" onclick="promptPassword('locked-file-2', 'moscu', 'audio6')">
+                    <span class="file-name">[ DATOS ] EXPEDIENTE_05_ESPIAS.dat</span>
+                    <span class="file-status">BLOQUEADO</span>
+                    <audio id="audio6" src="assets/ADORNI y los dos espías rusos  DNews - DNews.mp3"></audio>
+                </div>
+            </section>
+
+            <div id="password-modal" class="hidden">
+                <p>> INGRESE CLAVE DE ACCESO PARA DESENCRIPTAR:</p>
+                <input type="text" id="password-input" autocomplete="off" spellcheck="false">
+                <button onclick="checkPassword()">EJECUTAR</button>
+                <p id="password-error" class="error-text hidden">> ERROR: CLAVE INVÁLIDA.</p>
+            </div>
+        </main>
+
+        <footer>
+            <hr>
+            <p>CONEXIÓN SEGURA | ALIAS OPERADOR: .ARGL34K | CONTACTO: <a href="mailto:argmarcopolo@gmail.com">argmarcopolo@gmail.com</a></p>
+            <p class="blinking-cursor">_</p>
+        </footer>
+    </div>
+
+    <!-- PANEL DE ADMIN OCULTO (Ctrl+Shift+A) -->
+    <div id="admin-panel" class="hidden">
+        <div id="admin-panel-inner">
+            <h3>// PANEL DE OPERADOR .ARGL34K</h3>
+            <p>Nueva transmisión:</p>
+            <textarea id="admin-message-input" placeholder="Escribí el mensaje..." rows="4" spellcheck="false"></textarea>
+            <div class="admin-buttons">
+                <button onclick="postTransmission()">[ TRANSMITIR ]</button>
+                <button onclick="closeAdmin()" class="btn-cancel">[ CERRAR ]</button>
+            </div>
+            <hr>
+            <h3>// TRANSMISIONES ACTIVAS</h3>
+            <div id="admin-transmissions-list"></div>
+        </div>
+    </div>
+    <div id="admin-overlay" class="hidden" onclick="closeAdmin()"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

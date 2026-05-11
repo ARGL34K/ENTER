@@ -817,6 +817,7 @@ canvas { width: 100%; height: 100%; display: block; object-fit: cover; }
 
     .panoramic-layout.is-locked {
         justify-content: center;
+        padding-top: 0; /* Reset padding to center gate in full viewport */
     }
 
     /* Override for when content is visible to allow scrolling from top */

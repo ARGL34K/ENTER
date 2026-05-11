@@ -64,18 +64,18 @@
         <!-- CONTENIDO PRINCIPAL (OCULTO INICIALMENTE) -->
         <div id="main-content" class="panoramic-inner hidden">
             <nav class="mobile-nav">
-                <button id="m-btn-doc" class="m-nav-btn active" onclick="switchTab(2)">DOCUMENTOS</button>
+                <button id="m-btn-doc" class="m-nav-btn active" onclick="switchTab(0)">DOCUMENTOS</button>
                 <button id="m-btn-cam" class="m-nav-btn" onclick="switchTab(1)">CÁMARAS</button>
-                <button id="m-btn-freq" class="m-nav-btn" onclick="switchTab(0)">GRABACIONES</button>
+                <button id="m-btn-freq" class="m-nav-btn" onclick="switchTab(2)">GRABACIONES</button>
                 <button id="m-btn-logs" class="m-nav-btn" onclick="switchTab(3)">MENSAJES</button>
             </nav>
-            <!-- COLUMNA 1: GRABACIONES -->
-            <aside class="side-col col-freq">
-                <div class="ritual-frame side-module mod-freq">
-                    <div id="freq-label" class="frame-label mod-title">GRABACIONES</div>
-                    <div id="freq-list"></div>
+            <!-- COLUMNA 1: DOCUMENTOS (AHORA PRIMERA) -->
+            <section class="main-col col-osint tab-active">
+                <div class="ritual-frame frame-osint">
+                    <div id="doc-label" class="frame-label">DOCUMENTOS</div>
+                    <div id="osint-feed" class="osint-scroll"></div>
                 </div>
-            </aside>
+            </section>
 
             <!-- COLUMNA 2: CÁMARAS -->
             <section class="main-col col-surveillance">
@@ -90,13 +90,13 @@
                 </div>
             </section>
 
-            <!-- COLUMNA 3: DOCUMENTOS -->
-            <section class="main-col col-osint tab-active">
-                <div class="ritual-frame frame-osint">
-                    <div id="doc-label" class="frame-label">DOCUMENTOS</div>
-                    <div id="osint-feed" class="osint-scroll"></div>
+            <!-- COLUMNA 3: GRABACIONES -->
+            <aside class="side-col col-freq">
+                <div class="ritual-frame side-module mod-freq">
+                    <div id="freq-label" class="frame-label mod-title">GRABACIONES</div>
+                    <div id="freq-list"></div>
                 </div>
-            </section>
+            </aside>
 
             <!-- COLUMNA 4: MENSAJES -->
             <aside class="side-col col-logs">

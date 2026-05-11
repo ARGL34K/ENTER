@@ -889,7 +889,14 @@ canvas { width: 100%; height: 100%; display: block; object-fit: cover; }
     .cam-bank {
         grid-template-columns: 1fr 1fr;
         gap: 10px;
-        padding: 5px;
+        padding: 10px;
+        width: 100%;
+    }
+
+    .frame-surveillance {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
     }
 
     .cam-cell {

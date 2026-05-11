@@ -351,6 +351,16 @@ function changeLanguage(lang) {
     const docLabel = document.getElementById('doc-label');
     if (docLabel) docLabel.textContent = t.docTitle;
 
+    // MOBILE TABS
+    const mBtnFreq = document.getElementById('m-btn-freq');
+    if (mBtnFreq) mBtnFreq.textContent = t.freqTitle;
+    const mBtnCam = document.getElementById('m-btn-cam');
+    if (mBtnCam) mBtnCam.textContent = t.camTitle;
+    const mBtnDoc = document.getElementById('m-btn-doc');
+    if (mBtnDoc) mBtnDoc.textContent = t.docTitle;
+    const mBtnLogs = document.getElementById('m-btn-logs');
+    if (mBtnLogs) mBtnLogs.textContent = t.logsTitle;
+
     const closeBtn = document.querySelector('.lb-close');
     if (closeBtn) closeBtn.textContent = t.closeBtn;
 

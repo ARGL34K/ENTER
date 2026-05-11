@@ -772,9 +772,12 @@ canvas { width: 100%; height: 100%; display: block; object-fit: cover; }
         max-width: 100%;
         margin: 0 0 20px 0;
         border: 1px solid var(--red-blood);
-        background: rgba(139, 0, 0, 0.2);
-        z-index: 100;
+        background: rgba(0, 0, 0, 0.95); /* Opaque for sticky */
+        position: sticky;
+        top: 60px; /* Aligned with mobile header height */
+        z-index: 1100;
         box-sizing: border-box;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
     }
 
     .m-nav-btn {
@@ -802,7 +805,7 @@ canvas { width: 100%; height: 100%; display: block; object-fit: cover; }
     }
 
     .panoramic-layout {
-        padding: 80px 10px 20px;
+        padding: 100px 10px 20px; /* More space to ensure visibility */
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -820,7 +823,7 @@ canvas { width: 100%; height: 100%; display: block; object-fit: cover; }
     #main-content:not(.hidden) {
         display: block !important;
         width: 100%;
-        margin-top: 20px; /* Space from header */
+        margin-top: 0; /* Reset margin as we use padding-top on parent */
     }
 
     /* Remove the :has override as we now use .is-locked */

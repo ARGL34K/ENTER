@@ -4,20 +4,7 @@
 
 let currentLang = 'es';
 
-const OSINT_DATA = [
-    { date: '2024-09-01', source: 'CENITAL', title: 'DEROGACIÓN DNU FONDOS RESERVADOS SIDE', url: 'https://cenital.com/senado-se-derogo-el-dnu-de-fondos-reservados-para-la-side/' },
-    { date: '2025-05-07', source: 'CELS', title: 'MONITOREO DE GRUPOS VULNERABLES: INFORME', url: 'https://www.cels.org.ar/web/wp-content/uploads/2025/05/ICSI-Plan-de-Inteligencia-Nacional-y-directiva-para-monitoreo-de-grupos-vulnerables_mayo25.docx-1.pdf' },
-    { date: '2025-06-03', source: 'CNN', title: 'FILTRACIÓN: INVESTIGACIÓN A PERIODISTAS', url: 'https://cnnespanol.cnn.com/2025/06/03/argentina/filtran-supuesto-plan-argentina-investigar-periodistas-politicos-orix' },
-    { date: '2025-06-10', source: 'CENITAL', title: 'PLAN DE AVANCE SOBRE LA OPINIÓN PÚBLICA', url: 'https://cenital.com/alconada-mon-hay-un-plan-muy-bien-armado-para-tratar-de-avanzar-sobre-la-opinión-pública/' },
-    { date: '2025-07-01', source: 'ACIJ', title: 'SISTEMA DE INTELIGENCIA: RIESGO CONSTITUCIONAL', url: 'https://acij.org.ar/reforma-del-sistema-de-inteligencia-una-norma-que-pone-en-riesgo-garantias-constitucionales-basicas/' },
-    { date: '2025-07-15', source: 'CLARÍN', title: 'REASIGNACIÓN DE $25.000M PARA LA SIDE', url: 'https://www.clarin.com/politica/reasignan-25000-millones-side-tercio-fondos-destinara-gastos-reservados_0_ucp6M2LaPC.html' },
-    { date: '2025-09-01', source: 'CRISIS', title: 'PLAN DE INTELIGENCIA NACIONAL: INFORME', url: 'https://informes.revistacrisis.com.ar/controlar-al-pueblo-para-entregar-la-patria/' },
-    { date: '2025-10-01', source: 'HCDN', title: 'PROYECTO 4201-D-2025: CONTROL PARLAMENTARIO', url: 'https://www4.hcdn.gob.ar/dependencias/dsecretaria/Periodo2025/PDF2025/TP2025/4201-D-2025.pdf' },
-    { date: '2025-11-01', source: 'CHEQUEADO', title: 'SIDE: TERCERA AMPLIACIÓN PRESUPUESTARIA 2025', url: 'https://chequeado.com/el-explicador/los-fondos-reservados-de-la-secretaria-de-inteligencia-el-gobierno-de-milei-los-amplio-por-tercera-vez/' },
-    { date: '2025-11-15', source: 'PÁGINA 12', title: 'FONDOS RESERVADOS SIDE: AUMENTO POR DECRETO', url: 'https://www.pagina12.com.ar/810621-el-gobierno-aumento-los-fondos-reservados-para-la-side-por-d/' },
-    { date: '2025-12-02', source: 'FILO.NEWS', title: 'AMPLIACIÓN DE FONDOS SIDE EN SILENCIO', url: 'https://www.filo.news/noticia/2025/12/02/el-gobierno-amplia-fondos-a-la-side-en-silencio-y-en-medio-de-internas' },
-    { date: '2025-12-05', source: 'BOLETÍN OFICIAL', title: 'DECRETO 864/2025: POLÍTICA DE INTELIGENCIA NACIONAL', url: 'https://www.boletinoficial.gob.ar/detalleAviso/primera/335597/20251205' }
-];
+// OSINT_DATA moved inside TRANSLATIONS
 
 const TRANSLATIONS = {
     es: {
@@ -33,7 +20,21 @@ const TRANSLATIONS = {
         accessDenied: "ACCESO DENEGADO",
         consoleHeader: "[ OPERADOR // CONSOLA_DE_COMUNICACIONES ]",
         consolePlaceholder: "NUEVA TRANSMISIÓN...",
-        ticker: "Если вы это читаете, значит, что-то пошло не так. Или все пошло не так. Я не выбирал место, где нахожусь, но теперь я могу только бежать. Это способ защитить себя. Действуйте с осторожностью. Информация — это опасность. // "
+        ticker: "Если вы это читаете, значит, что-то пошло не так. Или все пошло не так. Я не выбирал место, где нахожусь, но теперь я могу только бежать. Это способ защитить себя. Действуйте с осторожностью. Информация — это опасность. // ",
+        osint: [
+            { date: '2024-09-01', source: 'CENITAL', title: 'DEROGACIÓN DNU FONDOS RESERVADOS SIDE', url: 'https://cenital.com/senado-se-derogo-el-dnu-de-fondos-reservados-para-la-side/' },
+            { date: '2025-05-07', source: 'CELS', title: 'MONITOREO DE GRUPOS VULNERABLES: INFORME', url: 'https://www.cels.org.ar/web/wp-content/uploads/2025/05/ICSI-Plan-de-Inteligencia-Nacional-y-directiva-para-monitoreo-de-grupos-vulnerables_mayo25.docx-1.pdf' },
+            { date: '2025-06-03', source: 'CNN', title: 'FILTRACIÓN: INVESTIGACIÓN A PERIODISTAS', url: 'https://cnnespanol.cnn.com/2025/06/03/argentina/filtran-supuesto-plan-argentina-investigar-periodistas-politicos-orix' },
+            { date: '2025-06-10', source: 'CENITAL', title: 'PLAN DE AVANCE SOBRE LA OPINIÓN PÚBLICA', url: 'https://cenital.com/alconada-mon-hay-un-plan-muy-bien-armado-para-tratar-de-avanzar-sobre-la-opinión-pública/' },
+            { date: '2025-07-01', source: 'ACIJ', title: 'SISTEMA DE INTELIGENCIA: RIESGO CONSTITUCIONAL', url: 'https://acij.org.ar/reforma-del-sistema-de-inteligencia-una-norma-que-pone-en-riesgo-garantias-constitucionales-basicas/' },
+            { date: '2025-07-15', source: 'CLARÍN', title: 'REASIGNACIÓN DE $25.000M PARA LA SIDE', url: 'https://www.clarin.com/politica/reasignan-25000-millones-side-tercio-fondos-destinara-gastos-reservados_0_ucp6M2LaPC.html' },
+            { date: '2025-09-01', source: 'CRISIS', title: 'PLAN DE INTELIGENCIA NACIONAL: INFORME', url: 'https://informes.revistacrisis.com.ar/controlar-al-pueblo-para-entregar-la-patria/' },
+            { date: '2025-10-01', source: 'HCDN', title: 'PROYECTO 4201-D-2025: CONTROL PARLAMENTARIO', url: 'https://www4.hcdn.gob.ar/dependencias/dsecretaria/Periodo2025/PDF2025/TP2025/4201-D-2025.pdf' },
+            { date: '2025-11-01', source: 'CHEQUEADO', title: 'SIDE: TERCERA AMPLIACIÓN PRESUPUESTARIA 2025', url: 'https://chequeado.com/el-explicador/los-fondos-reservados-de-la-secretaria-de-inteligencia-el-gobierno-de-milei-los-amplio-por-tercera-vez/' },
+            { date: '2025-11-15', source: 'PÁGINA 12', title: 'FONDOS RESERVADOS SIDE: AUMENTO POR DECRETO', url: 'https://www.pagina12.com.ar/810621-el-gobierno-aumento-los-fondos-reservados-para-la-side-por-d/' },
+            { date: '2025-12-02', source: 'FILO.NEWS', title: 'AMPLIACIÓN DE FONDOS SIDE EN SILENCIO', url: 'https://www.filo.news/noticia/2025/12/02/el-gobierno-amplia-fondos-a-la-side-en-silencio-y-en-medio-de-internas' },
+            { date: '2025-12-05', source: 'BOLETÍN OFICIAL', title: 'DECRETO 864/2025: POLÍTICA DE INTELIGENCIA NACIONAL', url: 'https://www.boletinoficial.gob.ar/detalleAviso/primera/335597/20251205' }
+        ]
     },
     en: {
         lockedTitle: "SYSTEM_LOCKED",
@@ -48,7 +49,21 @@ const TRANSLATIONS = {
         accessDenied: "ACCESS DENIED",
         consoleHeader: "[ OPERATOR // COMMUNICATIONS_CONSOLE ]",
         consolePlaceholder: "NEW TRANSMISSION...",
-        ticker: "If you are reading this, something went wrong. Or everything went wrong. I did not choose to be where I am, but now I can only escape. This is a way to protect myself. Proceed with caution. Information is danger. // "
+        ticker: "If you are reading this, something went wrong. Or everything went wrong. I did not choose to be where I am, but now I can only escape. This is a way to protect myself. Proceed with caution. Information is danger. // ",
+        osint: [
+            { date: '2024-09-01', source: 'CENITAL', title: 'REPEAL OF DNU SIDE RESERVED FUNDS', url: 'https://cenital.com/senado-se-derogo-el-dnu-de-fondos-reservados-para-la-side/' },
+            { date: '2025-05-07', source: 'CELS', title: 'MONITORING OF VULNERABLE GROUPS: REPORT', url: 'https://www.cels.org.ar/web/wp-content/uploads/2025/05/ICSI-Plan-de-Inteligencia-Nacional-y-directiva-para-monitoreo-de-groups-vulnerables_mayo25.docx-1.pdf' },
+            { date: '2025-06-03', source: 'CNN', title: 'LEAK: INVESTIGATION OF JOURNALISTS', url: 'https://cnnespanol.cnn.com/2025/06/03/argentina/filtran-supuesto-plan-argentina-investigar-periodistas-politicos-orix' },
+            { date: '2025-06-10', source: 'CENITAL', title: 'PLAN TO ADVANCE ON PUBLIC OPINION', url: 'https://cenital.com/alconada-mon-hay-un-plan-muy-bien-armado-para-tratar-de-avanzar-sobre-la-opinión-pública/' },
+            { date: '2025-07-01', source: 'ACIJ', title: 'INTELLIGENCE SYSTEM: CONSTITUTIONAL RISK', url: 'https://acij.org.ar/reforma-del-sistema-de-inteligencia-una-norma-que-pone-en-riesgo-garantias-constitucionales-basicas/' },
+            { date: '2025-07-15', source: 'CLARÍN', title: 'REALLOCATION OF $25BN FOR SIDE', url: 'https://www.clarin.com/politica/reasignan-25000-millones-side-tercio-fondos-destinara-gastos-reservados_0_ucp6M2LaPC.html' },
+            { date: '2025-09-01', source: 'CRISIS', title: 'NATIONAL INTELLIGENCE PLAN: REPORT', url: 'https://informes.revistacrisis.com.ar/controlar-al-pueblo-para-entregar-la-patria/' },
+            { date: '2025-10-01', source: 'HCDN', title: 'BILL 4201-D-2025: PARLIAMENTARY CONTROL', url: 'https://www4.hcdn.gob.ar/dependencias/dsecretaria/Periodo2025/PDF2025/TP2025/4201-D-2025.pdf' },
+            { date: '2025-11-01', source: 'CHEQUEADO', title: 'SIDE: THIRD BUDGET EXPANSION 2025', url: 'https://chequeado.com/el-explicador/los-fondos-reservados-de-la-secretaria-de-inteligencia-el-gobierno-de-milei-los-amplio-por-tercera-vez/' },
+            { date: '2025-11-15', source: 'PÁGINA 12', title: 'SIDE RESERVED FUNDS: INCREASE BY DECREE', url: 'https://www.pagina12.com.ar/810621-el-gobierno-aumento-los-fondos-reservados-para-la-side-por-d/' },
+            { date: '2025-12-02', source: 'FILO.NEWS', title: 'SILENT EXPANSION OF SIDE FUNDS', url: 'https://www.filo.news/noticia/2025/12/02/el-gobierno-amplia-fondos-a-la-side-en-silencio-y-en-medio-de-internas' },
+            { date: '2025-12-05', source: 'OFFICIAL GAZETTE', title: 'DECREE 864/2025: NATIONAL INTELLIGENCE POLICY', url: 'https://www.boletinoficial.gob.ar/detalleAviso/primera/335597/20251205' }
+        ]
     },
     fr: {
         lockedTitle: "SYSTÈME_BLOQUÉ",
@@ -63,7 +78,21 @@ const TRANSLATIONS = {
         accessDenied: "ACCÈS REFUSÉ",
         consoleHeader: "[ OPÉRATEUR // CONSOLE_DE_COMMUNICATIONS ]",
         consolePlaceholder: "NOUVELLE TRANSMISSION...",
-        ticker: "Si vous lisez ceci, quelque chose s'est mal passé. Ou tout s'est mal passé. Je n'ai pas choisi d'être là où je suis, mais maintenant je ne peux que m'échapper. C'est une façon de me protéger. Procédez avec caution. L'information est danger. // "
+        ticker: "Si vous lisez ceci, quelque chose s'est mal passé. Ou tout s'est mal passé. Je n'ai pas choisi d'être là où je suis, mais maintenant je ne peux que m'échapper. C'est une façon de me protéger. Procédez avec caution. L'information est danger. // ",
+        osint: [
+            { date: '2024-09-01', source: 'CENITAL', title: 'ABROGATION DU DNU FONDS RÉSERVÉS SIDE', url: 'https://cenital.com/senado-se-derogo-el-dnu-de-fondos-reservados-para-la-side/' },
+            { date: '2025-05-07', source: 'CELS', title: 'SURVEILLANCE DES GROUPES VULNÉRABLES : RAPPORT', url: 'https://www.cels.org.ar/web/wp-content/uploads/2025/05/ICSI-Plan-de-Inteligencia-Nacional-y-directiva-para-monitoreo-de-groups-vulnerables_mayo25.docx-1.pdf' },
+            { date: '2025-06-03', source: 'CNN', title: 'FUITE : ENQUÊTE SUR LES JOURNALISTES', url: 'https://cnnespanol.cnn.com/2025/06/03/argentina/filtran-supuesto-plan-argentina-investigar-periodistas-politicos-orix' },
+            { date: '2025-06-10', source: 'CENITAL', title: "PLAN D'AVANCEMENT SUR L'OPINION PUBLIQUE", url: 'https://cenital.com/alconada-mon-hay-un-plan-muy-bien-armado-para-tratar-de-avanzar-sobre-la-opinión-pública/' },
+            { date: '2025-07-01', source: 'ACIJ', title: "SYSTÈME D'INTELLIGENCE : RISQUE CONSTITUTIONNEL", url: 'https://acij.org.ar/reforma-del-sistema-de-inteligencia-una-norma-que-pone-en-riesgo-garantias-constitucionales-basicas/' },
+            { date: '2025-07-15', source: 'CLARÍN', title: 'RÉALLOCATION DE 25 MILLIARDS $ POUR LA SIDE', url: 'https://www.clarin.com/politica/reasignan-25000-millones-side-tercio-fondos-destinara-gastos-reservados_0_ucp6M2LaPC.html' },
+            { date: '2025-09-01', source: 'CRISIS', title: "PLAN D'INTELLIGENCE NATIONAL : RAPPORT", url: 'https://informes.revistacrisis.com.ar/controlar-al-pueblo-para-entregar-la-patria/' },
+            { date: '2025-10-01', source: 'HCDN', title: 'PROJET 4201-D-2025 : CONTRÔLE PARLEMENTAIRE', url: 'https://www4.hcdn.gob.ar/dependencias/dsecretaria/Periodo2025/PDF2025/TP2025/4201-D-2025.pdf' },
+            { date: '2025-11-01', source: 'CHEQUEADO', title: 'SIDE : TROISIÈME AGRANDISSEMENT BUDGÉTAIRE 2025', url: 'https://chequeado.com/el-explicador/los-fondos-reservados-de-la-secretaria-de-inteligencia-el-gobierno-de-milei-los-amplio-por-tercera-vez/' },
+            { date: '2025-11-15', source: 'PÁGINA 12', title: 'FONDS RÉSERVÉS SIDE : AUGMENTATION PAR DÉCRET', url: 'https://www.pagina12.com.ar/810621-el-gobierno-aumento-los-fondos-reservados-para-la-side-por-d/' },
+            { date: '2025-12-02', source: 'FILO.NEWS', title: 'EXPANSION SILENCIEUSE DES FONDS SIDE', url: 'https://www.filo.news/noticia/2025/12/02/el-gobierno-amplia-fondos-a-la-side-en-silencio-y-en-medio-de-internas' },
+            { date: '2025-12-05', source: 'JOURNAL OFFICIEL', title: 'DÉCRET 864/2025 : POLITIQUE D\'INTELLIGENCE NATIONALE', url: 'https://www.boletinoficial.gob.ar/detalleAviso/primera/335597/20251205' }
+        ]
     },
     it: {
         lockedTitle: "SISTEMA_BLOCCATO",
@@ -78,7 +107,21 @@ const TRANSLATIONS = {
         accessDenied: "ACCESSO NEGATO",
         consoleHeader: "[ OPERATORE // CONSOLE_DI_COMUNICAZIONE ]",
         consolePlaceholder: "NUOVA TRASMISSIONE...",
-        ticker: "Se stai leggendo questo, qualcosa è andato storto. O tutto è andato storto. Non ho scelto di essere dove sono, ma ora posso solo scappare. Questo è un modo per proteggermi. Procedere con cautela. L'informazione è pericolo. // "
+        ticker: "Se stai leggendo questo, qualcosa è andato storto. O tutto è andato storto. Non ho scelto di essere dove sono, ma ora posso solo scappare. Questo è un modo per proteggermi. Procedere con cautela. L'informazione è pericolo. // ",
+        osint: [
+            { date: '2024-09-01', source: 'CENITAL', title: 'ABROGAZIONE DNU FONDI RISERVATI SIDE', url: 'https://cenital.com/senado-se-derogo-el-dnu-de-fondos-reservados-para-la-side/' },
+            { date: '2025-05-07', source: 'CELS', title: 'MONITORAGGIO DEI GRUPPI VULNERABILI: RAPPORTO', url: 'https://www.cels.org.ar/web/wp-content/uploads/2025/05/ICSI-Plan-de-Inteligencia-Nacional-y-directiva-para-monitoreo-de-groups-vulnerables_mayo25.docx-1.pdf' },
+            { date: '2025-06-03', source: 'CNN', title: 'FUGA DI NOTIZIE: INDAGINE SUI GIORNALISTI', url: 'https://cnnespanol.cnn.com/2025/06/03/argentina/filtran-supuesto-plan-argentina-investigar-periodistas-politicos-orix' },
+            { date: '2025-06-10', source: 'CENITAL', title: "PIANO DI AVANZAMENTO SULL'OPINIONE PUBBLICA", url: 'https://cenital.com/alconada-mon-hay-un-plan-muy-bien-armado-para-tratar-de-avanzar-sobre-la-opinión-pública/' },
+            { date: '2025-07-01', source: 'ACIJ', title: 'SISTEMA DI INTELLIGENCE: RISCHIO COSTITUZIONALE', url: 'https://acij.org.ar/reforma-del-sistema-de-inteligencia-una-norma-que-pone-en-riesgo-garantias-constitucionales-basicas/' },
+            { date: '2025-07-15', source: 'CLARÍN', title: 'RIALLOCAZIONE DI 25 MILIARDI $ PER LA SIDE', url: 'https://www.clarin.com/politica/reasignan-25000-millones-side-tercio-fondos-destinara-gastos-reservados_0_ucp6M2LaPC.html' },
+            { date: '2025-09-01', source: 'CRISIS', title: 'PIANO DI INTELLIGENCE NAZIONALE: RAPPORTO', url: 'https://informes.revistacrisis.com.ar/controlar-al-pueblo-para-entregar-la-patria/' },
+            { date: '2025-10-01', source: 'HCDN', title: 'PROGETTO 4201-D-2025: CONTROLLO PARLAMENTARE', url: 'https://www4.hcdn.gob.ar/dependencias/dsecretaria/Periodo2025/PDF2025/TP2025/4201-D-2025.pdf' },
+            { date: '2025-11-01', source: 'CHEQUEADO', title: 'SIDE: TERZA ESPANSIONE DEL BUDGET 2025', url: 'https://chequeado.com/el-explicador/los-fondos-reservados-de-la-secretaria-de-inteligencia-el-gobierno-de-milei-los-amplio-por-tercera-vez/' },
+            { date: '2025-11-15', source: 'PÁGINA 12', title: 'FONDI RISERVATI SIDE: AUMENTO PER DECRETO', url: 'https://www.pagina12.com.ar/810621-el-gobierno-aumento-los-fondos-reservados-para-la-side-por-d/' },
+            { date: '2025-12-02', source: 'FILO.NEWS', title: 'ESPANSIONE SILENZIOSA DEI FONDI SIDE', url: 'https://www.filo.news/noticia/2025/12/02/el-gobierno-amplia-fondos-a-la-side-en-silencio-y-en-medio-de-internas' },
+            { date: '2025-12-05', source: 'GAZZETTA UFFICIALE', title: 'DECRETO 864/2025: POLITICA DI INTELLIGENCE NAZIONALE', url: 'https://www.boletinoficial.gob.ar/detalleAviso/primera/335597/20251205' }
+        ]
     }
 };
 
@@ -96,16 +139,20 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-function initV8() {
+function renderOsint(lang) {
     const osintFeed = document.getElementById('osint-feed');
-    if (osintFeed) {
-        osintFeed.innerHTML = OSINT_DATA.map(a => `
-            <a href="${a.url}" target="_blank" class="osint-item">
-                <div class="osint-meta">>> ${a.source} // ${a.date}</div>
-                <div class="osint-title">${a.title}</div>
-            </a>
-        `).join('');
-    }
+    if (!osintFeed) return;
+    const t = TRANSLATIONS[lang] || TRANSLATIONS.es;
+    osintFeed.innerHTML = t.osint.map(a => `
+        <a href="${a.url}" target="_blank" class="osint-item">
+            <div class="osint-meta">>> ${a.source} // ${a.date}</div>
+            <div class="osint-title">${a.title}</div>
+        </a>
+    `).join('');
+}
+
+function initV8() {
+    renderOsint(currentLang);
 
     const freqList = document.getElementById('freq-list');
     if (freqList) {
@@ -322,6 +369,8 @@ function validateAccess() {
     if (val === 'RN - NU - KS' || val === 'RNNUKS' || val === 'RN-NU-KS') {
         document.getElementById('integrated-gate').classList.add('hidden');
         document.getElementById('main-content').classList.remove('hidden');
+        document.querySelector('.panoramic-layout').classList.remove('is-locked');
+        window.scrollTo(0,0);
     } else {
         error.classList.remove('hidden');
         setTimeout(() => error.classList.add('hidden'), 3000);
@@ -377,6 +426,7 @@ function changeLanguage(lang) {
     if (consoleInput) consoleInput.placeholder = t.consolePlaceholder;
 
     renderTransmissions();
+    renderOsint(lang);
     if (!document.getElementById('stealth-modal').classList.contains('hidden')) {
         renderConsoleHistory();
     }

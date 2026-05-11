@@ -124,6 +124,17 @@ function initV8() {
     renderTransmissions();
 }
 
+function switchTab(idx) {
+    const cols = document.querySelectorAll('.side-col, .main-col');
+    const btns = document.querySelectorAll('.m-nav-btn');
+    
+    cols.forEach(c => c.classList.remove('tab-active'));
+    btns.forEach(b => b.classList.remove('active'));
+    
+    if (cols[idx]) cols[idx].classList.add('tab-active');
+    if (btns[idx]) btns[idx].classList.add('active');
+}
+
 function playAudio(id) {
     const target = document.getElementById(id);
     if (target && target.paused) target.play();

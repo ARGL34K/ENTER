@@ -767,13 +767,14 @@ canvas { width: 100%; height: 100%; display: block; object-fit: cover; }
 
     /* MOBILE TABS NAV */
     .mobile-nav {
-        display: flex;
+        display: flex !important;
         width: 100%;
-        max-width: 600px;
-        margin: 0 auto 20px;
+        max-width: 100%;
+        margin: 0 0 20px 0;
         border: 1px solid var(--red-blood);
-        background: rgba(139, 0, 0, 0.1);
+        background: rgba(139, 0, 0, 0.2);
         z-index: 100;
+        box-sizing: border-box;
     }
 
     .m-nav-btn {
@@ -783,12 +784,14 @@ canvas { width: 100%; height: 100%; display: block; object-fit: cover; }
         border-right: 1px solid var(--red-blood);
         color: var(--red-bright);
         font-family: var(--font-vt);
-        font-size: 0.7rem;
-        padding: 10px 2px;
+        font-size: 0.8rem;
+        padding: 12px 2px;
         cursor: pointer;
         transition: all 0.2s;
         text-transform: uppercase;
         letter-spacing: 1px;
+        text-align: center;
+        white-space: nowrap;
     }
 
     .m-nav-btn:last-child { border-right: none; }

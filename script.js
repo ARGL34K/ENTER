@@ -367,6 +367,7 @@ function validateAccess() {
     const val = input.value.trim().toUpperCase();
 
     if (val === 'RN - NU - KS' || val === 'RNNUKS' || val === 'RN-NU-KS') {
+        document.body.classList.add('is-authenticated');
         document.getElementById('integrated-gate').classList.add('hidden');
         document.getElementById('main-content').classList.remove('hidden');
         document.querySelector('.panoramic-layout').classList.remove('is-locked');
